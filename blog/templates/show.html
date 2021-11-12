@@ -25,7 +25,7 @@
             <td><a href="{% url 'detail' blog.id %}">{{blog.title}}</a></td>
             <td>{{blog.writer}}</td>
             <td>{{ blog.pub_date|date:'Y. m. d' }}</td>
-            <td></td>
+            <td>{{blog.hits}}</td>
           </tr>
         </tbody>
         {% endfor %}

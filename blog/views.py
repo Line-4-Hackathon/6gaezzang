@@ -21,24 +21,33 @@ def show(request):
 # 작성자, 날짜, 수정, 삭제 등등
 def detail(request, pk):
     blog = get_object_or_404(Blog, pk=pk)
-   
 
-    return render(request, 'detail.html', {'blog':blog})
+    #session_cookie = request.session['user_id']
+    user_id = request.session.get('user')
+    user = Fuser.objects.get(pk=user_id)
+    cookie_name = F'blog_hits:{user}'
+    context = {
+        'blog': blog,
+    }
+    response = render(request, 'detail.html', context)
 
-    """expire_date, now = datetime.now(), datetime.now()
-    expire_date += timedelta(days=1)
-    expire_date = expire_date.replace(hour=0, minute=0, second=0, microsecond=0)
-    expire_date -= timezone.now
-    max_age = expire_date.total_second()
-
-    cookie_value = request.COOKIES.get('hitboard', '_')
-
-    if f'_{pk}_' not in cookie_value:
-        cookie_value += f'{pk}_'
-        response.set_cookie('hitboard', value=cookie_value, max_age=max_age, httponly=True)
+    if request.COOKIES.get(cookie_name) is not None:
+        cookies = request.COOKIES.get(cookie_name)
+        cookies_list = cookies.split('|')
+        if str(pk) not in cookies_list:
+            response.set_cookie(cookie_name, cookies + f'|{pk}', expires=None)
+            blog.hits += 1
+            blog.save()
+            return response
+    else:
+        response.set_cookie(cookie_name, pk, expires=None)
         blog.hits += 1
-        blog.save()"""
-    
+        blog.save()
+        return response
+
+    return render(request, 'detail.html', context)
+   
+    #return render(request, 'detail.html', {'blog':blog})
 
 def new(request):
     form = BlogForm()

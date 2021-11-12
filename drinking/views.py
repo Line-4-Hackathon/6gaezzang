@@ -10,8 +10,11 @@ def mypage(request):
 def developer(request):
     return render(request, 'developer.html')
 
-def recommend(request):
-    return render(request, 'recommend.html')
+def course(request):
+    return render(request, 'course.html')
+
+def mountation(request):
+    return render(request, 'mountation.html')
 
 def weather(request):
     return render(request, 'weather.html')

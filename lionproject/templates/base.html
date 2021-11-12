@@ -26,10 +26,20 @@
                 Menu
                 <i class="fas fa-bars ms-1"></i></button>
              
-              <div class="collapse navbar-collapse" id="navbarResponsive">
+              <div class="collapse navbar-collapse" >
                   <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                      <li class="nav-item"><a class="nav-link" href="#services">등린킹이란?</a></li>
-                      <li class="nav-item"><a class="nav-link" href="{% url 'recommend' %}">등산코스 추천</a></li>
+                      <!--<li class="nav-item"><a class="nav-link" href="#services">등린킹이란?</a></li>-->
+                      <div class="dropdown">
+                        <a class="dropdown-toggle" href="{% url 'course' %}" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          코스/산 추천
+                        </a>
+                      
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <li><a class="dropdown-item" href="{% url 'course' %}">등산코스 추천</a></li>
+                          <li><a class="dropdown-item" href="{% url 'mountation' %}">산 추천</a></li>
+                        </ul>
+                      </div>
+
                       <li class="nav-item"><a class="nav-link" href="{% url 'show' %}">등산코스 후기</a></li>
                       <li class="nav-item"><a class="nav-link" href="{% url 'weather' %}">날씨 확인</a></li>
                       {% if request.session.user %}
