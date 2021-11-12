@@ -13,6 +13,9 @@ def developer(request):
 def course(request):
     return render(request, 'course.html')
 
+def course2(request):
+    return render(request, 'course2.html')
+
 def mountation(request):
     return render(request, 'mountation.html')
 

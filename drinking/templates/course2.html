@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br><br><br><br><br>
+{% load static %}
+<div class="pic">
+<h1 id="m1">인왕산</h1>
+</div>
+<section class="page-section" id="services">
+  <div class="container">
+      <div class="text-center">
+          <h3 id="p1" class="text-muted">
+            1. N서울타워를 비롯한 서울 중심을 한 눈에!</h3>
+            <h3 id="p2" class="section-subheading1 text-muted">
+              2. 탁 트인 시야는 힐링 그 자체!</h3>
+            <h3 id="p3" class="section-subheading1 text-muted">
+                3. 외부의 침입에 대비하여 만든 한양도성이 있어요!</h3>
+      </div><br><br><br>
+      <div class="row text-center">
+          
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+                <i class="fas fa-circle fa-stack-2x text-success"></i>
+                <i class="fas fa-mountain fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="my-3">등산코스</h4>
+            <p class="text-muted">1. 독립문역->안산자락길-범바위->정상</p>
+            <p class="text-muted">2. 경복궁역->한양도성길->범바위->정상</p>
+            
+        </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-danger"></i>
+                  <i class="fas fa-level-up-alt fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">산 난이도</h4>
+              <p class="text-muted">! 난이도: 중하</p>
+              <p class="text-muted">! 총 소요시간: 약 2시간</p>
+              <p class="text-muted">! 높이: 338m</p>
+              <p class="text-muted">! 등산화가 더 편해요~</p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-info"></i>
+                  <i class="fas fa-pen-alt fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">산 후기</h4>
+              <p class="text-muted">-등산초보도 쉽게 오를 수 있는 산!</p>
+              <p class="text-muted">-요새 가장 핫한 산!</p>
+              <p class="text-muted">-지하철역과 가까워서 뚜벅이에게 좋아요!</p>
+              <p class="text-muted">-야경이 정말 예뻐요!</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+<style>
+.pic {
+  height: 400px;
+  width: 2070px;
+  margin-top: -18px;
+  background-image: url("{% static 'mt1.jpg' %}");
+  background-repeat: repeat-x;
+}
+  
+#m1 {
+  color: #fff;
+  position:absolute;
+  left: 550px;
+  top: 150px;
+}
+
+.page-section h3.section-subheading, .page-section .section-subheading.h3 {
+  color: #0A6E0A;
+  font-size: 15rem;
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-bottom: 4rem;
+}
+</style>
+
+{% endblock %}
