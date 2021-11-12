@@ -28,19 +28,21 @@
              
               <div class="collapse navbar-collapse" >
                   <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                      <!--<li class="nav-item"><a class="nav-link" href="#services">등린킹이란?</a></li>-->
+                      <!--<li class="nav-item"><a class="nav-link" href="#services">등린킹이란?</a></li>
                       <div class="dropdown">
                         <a class="dropdown-toggle" href="{% url 'course' %}" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                           코스/산 추천
-                        </a>
-                      
+                        </a>-->
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'mountation' %}">산 추천</a></li>
+                      <!--
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                           <li><a class="dropdown-item" href="{% url 'course' %}">등산코스 추천</a></li>
                           <li><a class="dropdown-item" href="{% url 'mountation' %}">산 추천</a></li>
                         </ul>
-                      </div>
+                      </div>-->
 
-                      <li class="nav-item"><a class="nav-link" href="{% url 'list' %}">등산코스 후기</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'show' %}">커뮤니티</a></li>
                       <li class="nav-item"><a class="nav-link" href="{% url 'weather' %}">날씨 확인</a></li>
                       {% if request.session.user %}
                       <li class="nav-item">
@@ -54,8 +56,6 @@
                         </ul>
                         </li>
                         
-                        
-                       
                       <!--<li class="nav-item"><a class="nav-link" href="{% url 'mypage' request.session.user %}">안녕하세요, {{request.session.user}}님!</a></li>-->
                       <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">로그아웃</a></li>
                       {% else %}
@@ -4001,6 +4001,7 @@ textarea.form-control-lg {
   pointer-events: none;
   cursor: default;
 }
+
 
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
