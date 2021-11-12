@@ -2,32 +2,45 @@
 {% load static %}
 
 {% block css %}
-<link href="{% static 'css/about-mountain.css' %}" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/../static/css/about-mountain.css">
 {% endblock %}
 
 {% block content %}
 
-<ul class="nav nav-tabs" id="info_tab">
-    <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
+<div class="img_section">
+
+</div>
+<div id="info_tab">
+    <ul class="nav nav-tabs nav-justified ">
+        <li class="active">
+            <a href="#home" data-toggle="tab">Home</a>
+        </li>
+        <li>
+            <a href="#profile" data-toggle="tab">Profile</a>
+        </li>
+        <li>
+            <a href="#messages" data-toggle="tab">Messages</a>
+        </li>
+        <li>
+            <a href="#settings" data-toggle="tab">Settings</a>
+        </li>
     </ul>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
-</ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="home">Home 메뉴
+
+        </div>
+        <div class="tab-pane fade" id="profile">Profile 메뉴
+
+        </div>
+        <div class="tab-pane fade" id="messages">Messages 메뉴
+
+        </div>
+        <div class="tab-pane fade" id="settings">Settings 메뉴
+
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
@@ -62,6 +75,29 @@ function(err, data) {
 
     }
 }); -->
+
+<script>
+    // 메뉴가 선택되어 active가 되기 전 이벤트
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+        e.target // 현재 설정된 tab
+        e.relatedTarget // 이전에 설정된 탭
+    });
+    // 메뉴가 선택되어 active가 된 후 이벤트
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        e.target // 현재 설정된 tab
+        e.relatedTarget // 이전에 설정된 탭
+    });
+    // 다른 메뉴가 선택되어 active가 remove 되기 전 이벤트
+    $('a[data-toggle="tab"]').on('hide.bs.tab', function (e) {
+        e.target // 현재 설정된 tab
+        e.relatedTarget // 이전에 설정된 탭
+    });
+    // 다른 메뉴가 선택되어 active가 remove 된 후 이벤트
+    $('a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
+        e.target // 현재 설정된 tab
+        e.relatedTarget // 이전에 설정된 탭
+    });
+    
 
 </script>
 
