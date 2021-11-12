@@ -1,0 +1,21 @@
+{% extends 'list.html' %}
+{% block content %}
+<head>
+    <style>
+        #main {
+            margin-top: 150px;
+            margin-left: 300px;
+        }
+    </style>
+    
+    <title>댓글 수정하기</title>
+</head>
+
+<div id="main" class="col-md-offset-1 col-md-10">
+    <form method='POST'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="수정">
+    </form>
+</div>
+{% endblock %}

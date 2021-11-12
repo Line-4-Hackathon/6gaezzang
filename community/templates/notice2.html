@@ -1,0 +1,49 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <style>
+        #cookResult {
+            background-color:bisque;
+            border-radius: 20px;
+            width : 1000px
+        }
+
+        </style>
+    </head>
+<body>
+    <div id="cookResult" class="col-md-12">
+            <h3>제목 : 태그 작성법</h3>
+            <br/>
+            <p>글쓴이 : 관리자</p>
+            <hr/>
+            <p>태그는 쉼표로 구분하여 작성할 수 있습니다.</p>
+            <p>작성하고픈 태그가 예를 들어 '푸른', '하늘'이라면</p>
+            <p>푸른,하늘 이라고 태그 작성에 넣어주세요.</p>
+            <p>물론 태그를 작성하지 않으셔도 된답니다!</p>
+            <p>게시물과 태그 작성을 알았다면 이제 글을 써보러 가볼까요? :)</p>
+
+            <div class="bt">
+                {% if post.writer == user %}
+                <a href="{% url 'postupdate' post.id %}"><button type="button" class="btn btn-secondary">수정하기</button></a>
+                <a href="{% url 'postdelete' post.id %}"><button type="button" class="btn btn-secondary" onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</button></a>
+                   
+                {% endif %}
+            </div>
+            <hr/>
+            <a  href="{% url 'list' %}"><button type="button" class="btn btn-secondary float-right">뒤로가기</button></a>
+    </div>
+
+
+    
+</body>
+</html>
+{% endblock %}
+
+
+    
+    
+
+
+</div>
