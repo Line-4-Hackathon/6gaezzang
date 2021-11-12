@@ -1,7 +1,68 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/about-mountain.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
-<br><br><br><br><br>
-<h1>날씨 페이지</h1>
+<ul class="nav nav-tabs" id="info_tab">
+    <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+
+{% endblock %}
+
+{% block javascript %}
+<!-- <script>
+    const getJSON = function(url, callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onload = function() {
+            //접속이 성공적이면 null 값 반환, 아니면 status 값 반환
+            const status = xhr.status;
+            if (status === 200){
+                callback(null, xhr.response);
+            } else{
+                callback(status, xhr.response);
+            }
+        };
+        xhr.send();
+    };
+
+
+getJSON('https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=93d3ec2a6856fb0094b592b2e8d97d83&units=metric',
+function(err, data) {
+    //null 값이 아니면 err
+    if (err !== null) {
+        alert("예상치 못한 오류가 발생하였습니다. 오류 정보\n" + err);
+    } else {
+        alert(`최소 온도는 ${data.main.temp_min}도 입니다.`);
+        alert(`최대 온도는 ${data.main.temp_max}도 입니다.`);
+        alert(`현재 온도는 ${data.main.temp}도 입니다.`);
+
+    }
+}); -->
+
+</script>
 
 {% endblock %}
