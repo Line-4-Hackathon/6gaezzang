@@ -40,12 +40,9 @@ INSTALLED_APPS = [
     'blog',
     'user',
     'drinking',
-<<<<<<< HEAD
     'bootstrap4',
     'community',
     'commentcrud',
-=======
->>>>>>> bc9e8ff98d5fb2c8b2883fe970c17fca1c77c451
 ]
 
 MIDDLEWARE = [
