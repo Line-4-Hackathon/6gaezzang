@@ -25,11 +25,5 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('drinking/', include('drinking.urls')),
     path('user/', include('user.urls')),
-<<<<<<< HEAD
-=======
-    path('community/', include('community.urls')),
-    path('commentcrud/', include('commentcrud.urls')),
-
->>>>>>> fab298292d5b5df592b7c57cf6c1976e00171f3b
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

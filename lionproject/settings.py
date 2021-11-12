@@ -37,18 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'blog',
     'user',
     'drinking',
-=======
-    'bootstrap4',
-    'blog',
-    'user',
-    'drinking',
-    'community',
-    'commentcrud',
->>>>>>> fab298292d5b5df592b7c57cf6c1976e00171f3b
 ]
 
 MIDDLEWARE = [
