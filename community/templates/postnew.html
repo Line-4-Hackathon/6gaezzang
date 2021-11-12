@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+{% block container %}
+<head>
+    <style>
+        .form{
+            display:flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .title{
+            width:720px;
+            height:35px;
+        }
+        #submit{
+            float:right;
+            
+        }
+        .back{
+            background-color:#FAECC5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-md-offset-1 col-md-10">
+        
+        {% for message in messages %}
+        <div class="back alert {{ message.tags }} alert-auto-dismissible alert-dismissible notification-container text-center" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+                {{ message }}
+        </div>
+        {% endfor %}
+        <div class="form">
+            <form  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            {{ form.top_fixed }}
+            
+            <br><button id="submit" type="submit" class="btn btn-warning">작성</button>
+        </form>
+        </div>
+    </div>
+</body>
+
+
+
+{% endblock %}
+{% endblock %}
