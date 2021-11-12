@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  h1{padding: 2%;
+  }
+  input{
+    background-color: #FFC800;
+    border:none;
+    padding: 1%;
+    color:white;
+    border-radius: 4px;
+  
+  }
+  
+  </style>
+  
+<br><br><br><br><br>
+        <h1>등산 코스 후기 게시판 </h1>
+        
+        <br><br>
+
+        <div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">순번</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성일</th>
+            <th scope="col">조회수</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if blogs %}
+            {% for blog in blogs %}
+          <tr>
+            <th scope="row">{{forloop.counter}}<!--{{blog.id}}--></th>
+            <td><a href="{% url 'detail' blog.id %}">{{blog.title}}</a></td>
+            <td>{{blog.writer}}</td>
+            <td>{{ blog.pub_date|date:'Y. m. d' }}</td>
+            <td>{{blog.hits}}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+        {% else %}
+        <h1>글 없음</h1>
+        {% endif %}
+      </table>
+
+      <!-- 페이지네이터 -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if blogs.has_previous %}
+         <li class="page-item"><a class="page-link" href="?p={{ blogs.previous_page_number }}">Previous</a></li>
+         {% else %}
+         <li class="page-item disabled">
+          <a class="page-link" href="#">Previous</a>
+        </li>
+        {% endif %}
+        <li class="page-item">
+          <a class="page-link" href="#"
+            >{{ blogs.number }} / {{ blogs.paginator.num_pages }}</a
+          >
+        </li>
+        {% if blogs.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?p={{ blogs.next_page_number }}">Next</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">Next</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+      {% if request.session.user %}
+      <a href="{% url 'new' %}">
+        <input type="submit" value="글쓰기"></a>
+        {% else %}
+        <a href="{% url 'login' %}" onclick="return alert('글쓰기는 로그인 후에 가능합니다.')">
+          <input type="submit" value="글쓰기"></a>
+        {% endif %}
+      </div>
+    {% endblock %}

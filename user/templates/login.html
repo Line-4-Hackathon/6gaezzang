@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+  body{
+    background-image: url("{% static 'login.png' %}");
+    background-size: 100%;
+  }
+  .form-group{
+    margin-top: 20px;
+  }
+  
+</style>
+
+<body>
+  <br><br><br><br><br>
+  <div class="container" style="width: 30%; margin-top: 210px;">
+  <h1 style="margin-bottom: 30px;">LOGIN!</h1>
+
+  <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form-group">
+          <label for="{{field.id_for_label}}">{{field.label}}</label>
+          <input type="{{field.field.widget.input_type}}" class="form-control" id="{{field.id_for_label}}"
+          placeholder="{{field.label}}" name="{{field.name}}">
+      </div>
+      {% if field.errors %}
+      <span style="color:red">{{field.errors}}</span>
+      {% endif %}
+      {% endfor %}
+      
+      <input type="submit" class="btn btn-primary" value="로그인">
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <label class="form-check-label" for="inlineCheckbox1">
+            자동 로그인
+          </label>
+        </div><br>
+      계정이 없으신가요? <a href="{% url 'signup' %}">회원가입</a>
+  </form>
+  </div>
+
+{% endblock %}
+</body>

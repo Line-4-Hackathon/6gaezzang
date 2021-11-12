@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br><br><br><br>
+<h1>다녀오신 등산코스의 후기를 작성해주세요.</h1>
+
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+    {%csrf_token %}
+            {% for field in form %}
+            <div class ="form-group">
+                <label for = "{{ field.id_for_label }}">{{field.label}}</label>
+
+                {% ifequal field.name 'body' %}
+                <textarea class = "form-control" name = "{{ field.name }}" placeholder = "{{field.label}}"></textarea>
+
+                {% else %}
+                <input type = "{{ field.field.widget.input_type }}" class ="form-control" id ="{{field.id_for_label}}" 
+                placeholder = "{{field.label}}" name = "{{field.name}}">
+                {% endifequal %}
+            </div>
+            {% if field.errors %}
+            <span style = "color:red">{{field.errors}}</span>
+            {% endif %}
+            {% endfor %}
+    <button type="submit" class="btn btn-primary" style = "float:right;">글 등록</button>
+   
+</form>
+
+{% endblock %}

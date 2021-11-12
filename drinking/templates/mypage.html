@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br><br><br><br><br>
+<h1>회원정보</h1>
+<table class="table"> 
+    <tr> <th width='20%'>아이디</th> <td>{{fuser.username}}</td> </tr>
+    <form action="{% url 'mypage' request.session.user %}"> 
+        {% csrf_token %} 
+    <tr> <th width='20%'>이름</th> <td><input type="text" ></td> </tr> 
+    <tr> <th width='20%'>전화번호</th> <td><input type="text" ></td> </tr> 
+    <tr> <th width='20%'>이메일</th> 
+        <td><input type="email"></td> 
+    </tr> 
+    <tr> <th width='20%'>사진</th> <td><div class="input-group mb-3">
+        <input type="file" class="form-control" id="inputGroupFile02">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+      </div></td> </tr> 
+
+
+
+        </table>
+        <input type='submit' value="저장" class='btn btn-primary'> 
+    </form>
+
+{% endblock %}
