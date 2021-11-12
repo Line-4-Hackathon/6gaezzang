@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br><br><br><br><br>
+<div class="container">
+<h1>SIGN UP!</h1>
+<form action="{% url 'signup' %}" method="POST"> 
+    {% csrf_token %} 
+    {% for field in form %} 
+   
+    <div class="form-group"> 
+        <label for='{{field.id_for_label}}'>{{field.label}}</label> 
+        <span id="passwordHelpInline" class="form-text">
+            *최소 8자리</span>
+        <input type="{{field.field.widget.input_type}}" class="form-control" id="{{field.id_for_label}}"
+        placeholder="{{field.label}}" name="{{field.name}}">
+    </div> 
+    {% if field.errors %} 
+    <span style='color:red'>{{field.errors}}</span> 
+    {% endif %} 
+    {% endfor %}  <br>
+    <input type='submit' value="가입하기" class='btn btn-primary'> 
+    이미 계정이 있으신가요? <a href="{% url 'login' %}">로그인</a> 
+</form>
+</div>
+
+{% endblock %}
