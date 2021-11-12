@@ -19,6 +19,9 @@ def mountation(request):
 def weather(request):
     return render(request, 'weather.html')
 
+def loading(request):
+    return render(request, 'loading.html')
+
 class MemberDetailView(DetailView): 
     template_name = 'mypage.html' 
     model = Fuser

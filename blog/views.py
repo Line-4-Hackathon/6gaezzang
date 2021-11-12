@@ -10,6 +10,9 @@ from datetime import date, datetime, timedelta
 def home(request):
     return render(request, 'home.html')
 
+def loading(request):
+    return render(request, 'loading.html')
+
 # 첫 게시판 화면
 def show(request):
     blog = Blog.objects.filter(is_del=0).order_by('-pub_date')
