@@ -9,6 +9,9 @@ from datetime import date, datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 
+def loading(request):
+    return render(request, 'loading.html')
+
 def home(request):
     url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query=%EB%93%B1%EC%82%B0'
     req = requests.get(url)
