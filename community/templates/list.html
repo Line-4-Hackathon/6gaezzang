@@ -61,17 +61,17 @@
                     </tr>
 
                     {% for post in posts %}
-                    <tr>
-                        <th scope="row">{{ posts.paginator.count|sub:posts.start_index|sub:forloop.counter0|add:1 }}</th>
-                    {% if user.is_authenticated %}
-                    <td><a href="{% url 'postshow' post.id %}">{{post.title}}</a></td>
-                    {% else %}
-                    <td><a href=""onclick = "return alert('로그인 후 열람 가능합니다.')">[{{ post.category }}] {{post.title}}</a></td>
-                    {% endif %}
-                    <td>{{ post.writer }}</td>
-                    <td>{{ post.pub_date }}</td>
-                    <td>{{ post.like.all.count }}</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">{{ posts.paginator.count|sub:posts.start_index|sub:forloop.counter0|add:1 }}</th>
+                        {% if request.user %}
+                            <td><a href="{% url 'postshow' post.id %}">{{post.title}}</a></td>
+                        {% else %}
+                            <td><a href="" onclick = "return alert('로그인 후 열람 가능합니다.')">{{post.title}}</a></td>
+                        {% endif %}
+                        <td>{{ post.writer }}</td>
+                        <td>{{ post.pub_date }}</td>
+                        <td>{{ post.like.all.count }}</td>
+                        </tr>
                     {% endfor %}
                 </tbody>
                 </table>
@@ -111,8 +111,8 @@
                   
     </div>
     <div id="new">
-    {% if user.is_authenticated %}
-        <a class="new" href="{% url 'postcreate' %}"><button type="button" class="btn btn-warning">새 글 작성</button></a>
+        {% if request.user %}
+            <a class="new" href="{% url 'postcreate' %}"><button type="button" class="btn btn-warning">새 글 작성</button></a>
         {% endif %}
     </div>  
 </body>
