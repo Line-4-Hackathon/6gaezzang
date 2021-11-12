@@ -1,0 +1,27 @@
+{% extends 'list.html' %}
+{% block content %}
+<head>
+    <style>
+        #submit{
+            float:right;
+        }
+    </style>
+    
+    <title>글 수정하기</title>
+</head>
+<body>
+    <div class="col-md-offset-1 col-md-10">
+        <h2>수정하기</h2>
+
+        <form method='POST'>
+             {% csrf_token %}
+            {{form.as_p}}
+            <br>
+            <input id="submit" type="submit" value="수정">
+        </form>
+
+    </div>
+
+</body>
+
+{% endblock %}
