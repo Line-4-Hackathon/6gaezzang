@@ -1,50 +1,127 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css %}
-<link type="text/css" rel="stylesheet" href="/../static/css/about-mountain.css">
-{% endblock %}
+
 
 {% block content %}
+<!-- <link type="text/css" rel="stylesheet" href="/../static/css/bootstrap-index.css"> -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,900" rel="stylesheet"> 
+<style>
+    body{
+        overflow: hidden; /* Hide scrollbars */
+    }
+    span{
+        background: rgba(0, 0, 0, 0);
+    }
+</style>
+<div class="img_section" style="margin-top: 0px;">
 
-<div class="img_section">
+</div>
+<div class="container ms-0 p-0" >
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <img class="mx-auto" src="{% static "mt4.jpg" %}" style=" width: 160%; opacity: 0.7;">
+        </div>
+        <div class="col-lg-12" ">
+            <div class="p-5" >  
+                <!-- style="border-radius: 30px; background-color: rgba(7, 38, 65, 0.322);" -->
+                <h1 id="high-temp" style=" color: #1a1f1c; font-size: 100px; font-weight: bolder; position: absolute; top: 50%; left: 43%;">도봉산</h1>
+                <h1 id="high-temp" class="mt-1" style=" color: #19201c; font-size: 30px; font-weight: bolder; position: absolute; top: 63%; left: 37%;">이번 주말엔 가족들과 도봉산 어때요?</h1>
+
+            </div>
+        
+            <div class="card p-3 mt-3" style="border-radius: 30px; background-color: #242725a2;  position: absolute; top: 70%; left: 40%; width: 400px;">
+                <div class="row">
+                    <div class="col-12 text-center"> 
+                        <h4 class="mb-2" id="location" style="color: #ffc800;"></h4>
+                            <img class="p-2" src="{% static "sunny.png" %}" width="80">
+                                <h1 id="temp" style="color: white; "></h1>
+                                <h5 id="description" style="color: white; font-size: 20px"></h5>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <style>
+                body {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 400;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-shadow: .1em .1em 0 rgba(0,0,0,0.3);
+                    font-size: 1.3em;
+                    height: 100vh;
+                    background-image: linear-gradient(to right top, #99bbcb, #a5c7d7, #b1d4e2, #bde0ee, #c9edfa);
+                }
+                h1 {
+                    margin: 0 auto;
+                    font-size: 2.2em;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 5em;
+                }
+                body.sunny {
+                    background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423);
+                }
+                body.cloudy {
+                    background-image: linear-gradient(to right top, #63747c, #71858e, #7f96a0, #8da8b2, #9bbac5);
+                }
+                body.rainy {
+                    background-image: linear-gradient(to right top, #637c7b, #718e8c, #7ea09e, #8db2b0, #9bc5c3);
+                }
+            </style>
+
+<script>
+const key = '93d3ec2a6856fb0094b592b2e8d97d83';
+
+function weatherBallon( cityID ) {
+	fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)  
+	.then(function(resp) { return resp.json() }) // Convert data to json
+	.then(function(data) {
+		drawWeather(data);
+	})
+	.catch(function() {
+		// catch any errors
+	});
+}
+function drawWeather( d ) {
+    var celcius = Math.round(parseFloat(d.main.temp)-273.15);
+    var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
+    var description = d.weather[0].description; 
+    var celcius1 = Math.round(parseFloat(d.main.temp_min)-273.15);
+    var fahrenheit1 = Math.round(((parseFloat(d.main.temp_min)-273.15)*1.8)+32);
+    var description1 = d.weather[0].description; 
+    var celcius2 = Math.round(parseFloat(d.main.temp_max)-273.15);
+    var fahrenheit2 = Math.round(((parseFloat(d.main.temp_max)-273.15)*1.8)+32);
+    var description2 = d.weather[0].description; 
+        
+        document.getElementById('description').innerHTML = description;
+        document.getElementById('temp').innerHTML = celcius + '&deg;';
+        document.getElementById('location').innerHTML = d.name;
+        document.getElementById('description1').innerHTML = description;
+        document.getElementById('temp1').innerHTML = celcius + '&deg;';
+        document.getElementById('location1').innerHTML = d.name;
+        document.getElementById('description2').innerHTML = description;
+        document.getElementById('temp2').innerHTML = celcius + '&deg;';
+        document.getElementById('location2').innerHTML = d.name;
     
-</div>
-<div id="info_tab">
-    <ul class="nav nav-tabs nav-justified ">
-        <li class="active">
-            <a href="#home" data-toggle="tab">Home</a>
-        </li>
-        <li>
-            <a href="#profile" data-toggle="tab">Profile</a>
-        </li>
-        <li>
-            <a href="#messages" data-toggle="tab">Messages</a>
-        </li>
-        <li>
-            <a href="#settings" data-toggle="tab">Settings</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade in active" id="home">Home 메뉴
-
-        </div>
-        <div class="tab-pane fade" id="profile">Profile 메뉴
-
-        </div>
-        <div class="tab-pane fade" id="messages">Messages 메뉴
-
-        </div>
-        <div class="tab-pane fade" id="settings">Settings 메뉴
-
-        </div>
-    </div>
-</div>
-
-{% endblock %}
-
-{% block javascript %}
+    // if( description.indexOf('rain') > 0 ) {
+    //     document.body.className = 'rainy';
+    // } else if( description.indexOf('cloud') > 0 ) {
+    //     document.body.className = 'cloudy';
+    // } else if( description.indexOf('sunny') > 0 ) {
+    //     document.body.className = 'sunny';
+    // } else {
+    //     document.body.className = 'clear';
+    // }
+}
+window.onload = function() {
+	weatherBallon( 1835848 ); //1835848
+}
+</script>
 <!-- <script>
     const getJSON = function(url, callback) {
         const xhr = new XMLHttpRequest();
@@ -69,36 +146,21 @@ function(err, data) {
     if (err !== null) {
         alert("예상치 못한 오류가 발생하였습니다. 오류 정보\n" + err);
     } else {
-        alert(`최소 온도는 ${data.main.temp_min}도 입니다.`);
-        alert(`최대 온도는 ${data.main.temp_max}도 입니다.`);
-        alert(`현재 온도는 ${data.main.temp}도 입니다.`);
+        let hightemp = xhr.getElementById("high-temp");
+        let lowtemp = xhr.getElementById("low-temp");
+        let currenttemp = xhr.getElementById("current-temp");
+        hightemp.innerHTML(`오늘 서울 최저 온도는 ${data.main.temp_min}도 입니다.`);
+        lowtemp.innerHTML(`오늘 서울 최고 온도는 ${data.main.temp_max}도 입니다.`);
+        currenttemp.innerHTML(`지금 서울 온도는 ${data.main.temp}도 입니다.`);
 
     }
-}); -->
+});
 
-<script>
-    // 메뉴가 선택되어 active가 되기 전 이벤트
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-        e.target // 현재 설정된 tab
-        e.relatedTarget // 이전에 설정된 탭
-    });
-    // 메뉴가 선택되어 active가 된 후 이벤트
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        e.target // 현재 설정된 tab
-        e.relatedTarget // 이전에 설정된 탭
-    });
-    // 다른 메뉴가 선택되어 active가 remove 되기 전 이벤트
-    $('a[data-toggle="tab"]').on('hide.bs.tab', function (e) {
-        e.target // 현재 설정된 tab
-        e.relatedTarget // 이전에 설정된 탭
-    });
-    // 다른 메뉴가 선택되어 active가 remove 된 후 이벤트
-    $('a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
-        e.target // 현재 설정된 tab
-        e.relatedTarget // 이전에 설정된 탭
-    });
-    
+</script> -->
 
-</script>
+{% endblock %}
+
+{% block javascript %}
+
 
 {% endblock %}
