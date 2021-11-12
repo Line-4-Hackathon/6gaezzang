@@ -1,0 +1,11 @@
+.img_section{
+    height: 500px;
+    width: 100%;
+    color: gold;
+    z-index: 999;
+}
+#info_tab{
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+}

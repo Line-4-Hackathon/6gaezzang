@@ -2,9 +2,10 @@
 {% block content %}
 
 <br><br><br><br><br>
+
 {% load static %}
 <h2>지역별 모아보기</h2>
-<input type="button" class="btn btn-primary btn-m text-uppercase" name="answer" value="더 보기" onclick="showDiv1()" />
+<input type="button" name="answer" value="더 보기" onclick="showDiv1()" style="background-Color:#F7C945; border-radius: 7px; border: 0; margin-bottom: 8px; margin-top: 10px;" />
 <div class="child-page-listing" id="picture1">
   
     <div class="grid-container">
@@ -41,7 +42,8 @@
 </div>
 
 <!--지역별 더보기-->
-<div id="regionDiv" style="display:none;" class="answer_list">
+<div id="regionDiv"  style="display:none; margin-top: 10px;" class="answer_list">
+
 <table class="table" id="lmore">
     <thead class="thead-dark">
       <tr>
@@ -75,7 +77,10 @@
 
 <!--주제별-->
 <h2>주제별 모아보기</h2>
+
 <input type="button" class="btn btn-primary btn-m text-uppercase" name="answer2" value="더 보기" onclick="showDiv2()"/>
+
+<input type="button" name="answer2" value="더 보기" onclick="showDiv2()" style="background-Color:#F7C945; border-radius: 7px; border: 0; margin-bottom: 8px; margin-top: 10px;" />
 
   <div class="child-page-listing" id="picture2">
     <div class="grid-container">
@@ -114,7 +119,7 @@
 </div>
 
 <!--주제별 더보기-->
-<div id="titleDiv"  style="display:none;" class="answer_list">
+<div id="titleDiv"  style="display:none; margin-top: 10px;" class="answer_list">
 <table class="table" id="tmore">
     <thead class="thead-dark">
       <tr>
@@ -179,6 +184,8 @@
 </script>
 
 <style>
+  
+
 #mt1 {
     position:relative;
     top: 20px;
