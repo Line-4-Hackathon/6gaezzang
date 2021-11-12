@@ -68,8 +68,5 @@ def postdelete(request, post_id):
 
 def likes(request, post_id): 
     post = get_object_or_404(Post, pk=post_id)
-    if request.user == post.writer:
-        messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
-    else:
-        post.like.add(request.user)
+    post.like.add(request.username)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

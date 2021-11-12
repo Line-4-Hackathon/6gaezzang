@@ -6,9 +6,26 @@ from .forms import BlogForm
 from user.models import Fuser
 from django.core.paginator import Paginator
 from datetime import date, datetime, timedelta
+import requests
+from bs4 import BeautifulSoup
+
+def loading(request):
+    return render(request, 'loading.html')
 
 def home(request):
-    return render(request, 'home.html')
+    url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query=%EB%93%B1%EC%82%B0'
+    req = requests.get(url)
+    soup = BeautifulSoup(req.text, 'html.parser')
+    a_list = soup.select('ul.list_news > li.bx > div.news_wrap > div.news_area > a')
+    title_list = []
+    url_list = []
+    num_list = [0,1,2,3,4,5]
+    for num in range(0,6):
+        url_list.append(a_list[num]['href'])
+    for num in range(0, 6):
+        title_list.append(a_list[num]['title'])
+    
+    return render(request, 'home.html',{'title_list':title_list,'url_list':url_list,'num_list':num_list})
 
 # 첫 게시판 화면
 def show(request):

@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('content', models.TextField()),
                 ('pub_date', models.DateTimeField(auto_now_add=True, null=True, verbose_name='글작성일')),
                 ('top_fixed', models.BooleanField(default=False, verbose_name='상단고정')),
+                ('like', models.ManyToManyField(blank=True, related_name='likes', to=settings.AUTH_USER_MODEL)),
                 ('writer', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='community', to=settings.AUTH_USER_MODEL, verbose_name='작성자')),
             ],
         ),
