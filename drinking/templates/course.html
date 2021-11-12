@@ -2,6 +2,82 @@
 {% block content %}
 
 <br><br><br><br><br>
-<h1>등산코스 추천 페이지</h1>
+{% load static %}
+<div class="pic">
+<h1 id="m1">도봉산</h1>
+</div>
+<section class="page-section" id="services">
+  <div class="container">
+      <div class="text-center">
+          <!--<h2 class="section-heading text-uppercase">도봉산</h2>-->
+          <h3 id="p1" class="text-muted">
+            1. 우람한 기암괴석이 이루는 수려한 경관!</h3>
+            <h3 id="p2" class="section-subheading1 text-muted">
+              2. 대표 봉우리: 자운봉, 만장봉, 선인봉</h3>
+            <h3 id="p3" class="section-subheading1 text-muted">
+                3. 북한산국립공원에 포함된 산이에요!</h3>
+      </div><br><br><br>
+      <div class="row text-center">
+          
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+                <i class="fas fa-circle fa-stack-2x text-success"></i>
+                <i class="fas fa-mountain fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="my-3">등산코스</h4>
+            <p class="text-muted">1. 여성봉->오봉->신선대->자운봉</p>
+            <p class="text-muted">2. 도봉산공영주차장->도봉대피소->마당바위->신선대</p>
+            
+        </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-danger"></i>
+                  <i class="fas fa-level-up-alt fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">산 난이도</h4>
+              <p class="text-muted">! 난이도: 상</p>
+              <p class="text-muted">! 총 소요시간: 약 5시간</p>
+              <p class="text-muted">! 최고 높이: 752m</p>
+              <p class="text-muted">! 약 1시간 동안 상당히 가파른 급경사가 이어져요...</p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-info"></i>
+                  <i class="fas fa-pen-alt fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">산 후기</h4>
+              <p class="text-muted">-일반 운동화는 신고 가지 마세요!</p>
+              <p class="text-muted">-고소공포증이 있다면 Y계곡은 피하시길!</p>
+              <p class="text-muted">-난간을 붙잡아야 하는 곳이 많아요!</p>
+              <p class="text-muted">-가을에 딱! 단풍이 정말 예뻐요!</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+<style>
+.pic {
+  height: 400px;
+  width: 1270px;
+  margin-top: -18px;
+  background-image: url("{% static 'dobong.jpg' %}");
+}
+  
+#m1 {
+  color: #0A6E0A;
+  position:absolute;
+  left: 550px;
+  top: 150px;
+}
+
+.page-section h3.section-subheading, .page-section .section-subheading.h3 {
+  color: #0A6E0A;
+  font-size: 15rem;
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-bottom: 4rem;
+}
+</style>
 
 {% endblock %}
